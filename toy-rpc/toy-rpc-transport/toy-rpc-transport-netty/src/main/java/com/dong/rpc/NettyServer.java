@@ -16,6 +16,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.util.internal.StringUtil;
 import org.apache.log4j.Logger;
 
@@ -59,6 +60,7 @@ public class NettyServer implements Channel {
                         socketChannel.pipeline().addLast("decoder",
                                 new NettyDecoder(10 * 1024 * 1024, 1 , 4, 0,0  ))
                                 .addLast("encoder", new NettyEncoder())
+                                .addLast(new ReadTimeoutHandler(500))//设置超时时间
                                 .addLast(new NettyChannelHandler(NettyServer.this, messageHandler));
                     }
                 })

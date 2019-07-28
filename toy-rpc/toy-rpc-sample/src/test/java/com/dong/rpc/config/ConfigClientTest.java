@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class ConfigClientTest {
 
-    private static String ZK_URL = "zk://121.43.104.34:2181";
+    private static String ZK_URL = "zk://localhost:2181";
     private static String interfaceClass = "com.dong.rpc.service.name.NameService";
 
     private ConsumerConfig getConsumerConfig(String registryUrl, String clazz) {

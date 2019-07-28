@@ -36,11 +36,11 @@ public class ConfigServerTest {
     //121.43.104.34
     @Test
     public void testServerConfig() {
-        ProviderConfig providerConfig = getProviderConfig("zk://121.43.104.34:2181", 11367,
+        ProviderConfig providerConfig = getProviderConfig("zk://localhost:2181", 11367,
                 "com.dong.rpc.service.name.NameService");
         providerConfig.export();
         try {
-            Thread.sleep(300000);
+            Thread.sleep(300000000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
